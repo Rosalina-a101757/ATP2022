@@ -1,0 +1,54 @@
+# Tpc2: O computador pensa num número (entre 0 e 100) e o utilizador tenta adivinhar
+
+import random
+pc=int(random.randrange(0,101))
+tentativa=int(input("Escreve um número"))
+print(tentativa)
+totaltentativas=0
+while (pc!=tentativa):
+    if (pc>tentativa):
+        veredito="maior"
+        totaltentativas=totaltentativas+1
+    if (pc<tentativa):
+        veredito="menor"
+        totaltentativas=totaltentativas+1
+    print(veredito)
+    tentativa=int(input("Escreve um número"))
+    print(tentativa)
+
+veredito="Acertou!"
+totaltentativas=totaltentativas+1
+print(veredito)
+print(totaltentativas)        
+
+
+
+# Tpc2: O utilizador pensa num número (entre 0 e 100) e o computador tenta adivinhar
+
+import random
+N=(int(input("Escolhe um número N de 0 a 100 e não reveles ao teu adversário")))
+tentativa=int(random.randrange(0,101))
+print(tentativa)
+totaltentativas=0
+limitesup=100
+limiteinf=0
+while(N!=tentativa): 
+    veredito=(str(input("O número é maior ou menor?")))
+    print(veredito)
+    if (veredito[1]=="a"):
+        limiteinf=tentativa
+        tentativa=int(random.randrange(tentativa+1,limitesup+1))
+        totaltentativas=totaltentativas+1
+    if (veredito[1]=="e"):
+        limitesup=tentativa
+        tentativa=int(random.randrange(limiteinf,tentativa))
+        totaltentativas=totaltentativas+1
+
+    print(tentativa)
+
+if (N==tentativa):
+    veredito="Acertou!"
+    totaltentativas=totaltentativas+1
+    print(veredito)
+
+print(totaltentativas)
