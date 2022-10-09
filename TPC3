@@ -1,0 +1,105 @@
+import random
+global guardar
+guardar = []
+
+menu = 20
+while menu != 0:
+    menu = int(input('''
+MENU: 
+(1) Criar Lista 
+(2) Ler Lista
+(3) Soma
+(4) Média
+(5) Maior
+(6) Menor
+(7) estaOrdenada por ordem crescente
+(8) estaOrdenada por ordem decrescente
+(9) Procura um elemento
+(0) Sair
+------> '''))
+
+    if menu == 1:
+        lista1 = []
+        N = 5
+        while N > 0:
+            num1 = random.randint(0, 101)
+            lista1.append(num1)
+            N = N - 1
+        guardar = lista1
+        print(lista1)
+
+    if menu == 2:
+        lista2 = []
+        N = int(input("Escolhe o Número de elementos que vai ter a tua sequência"))
+        while N > 0:
+            num2 = int(input("Escolhe um elemento para fazer parte da sequência"))
+            lista2.append(num2)
+            N = N - 1
+        guardar = lista2
+        print(lista2)
+
+    if menu == 3:
+        soma = 0
+        for i in guardar:
+            soma = soma + i
+        print(soma)
+
+    if menu == 4:
+        soma = 0
+        for i in guardar:
+            soma = soma + i
+        média = soma / len(guardar)
+        print(média)
+
+    if menu == 5:
+        maior = guardar[0]
+        for i in guardar[1:]:
+            if i > maior:
+                maior = i
+        print(maior)
+
+    if menu == 6:
+        menor = guardar[0]
+        for i in guardar[1:]:
+            if i < menor:
+                menor = i
+        print(menor)
+
+    if menu == 7:
+        ant = guardar[0]
+        for i in guardar[1:]:
+            if i >= ant:
+                ant = i
+        if ant == guardar[-1]:
+            veredito = "Sim"
+        else:
+            veredito = "Não"
+        print(veredito)
+
+    if menu == 8:
+        menor = guardar[0]
+        for i in guardar[1:]:
+            if i <= menor:
+                menor = i
+        if menor == guardar[-1]:
+            veredito = "Sim"
+        else:
+            veredito = "Não"
+        print(veredito)
+
+    if menu == 9:
+        elemento = int(input("Escolhe o valor que queres encontrar na tua lista: "))
+        indice = -1
+        if elemento in guardar:
+            for i in guardar:
+                indice = indice + 1
+                if i == elemento:
+                    print(indice)
+                    break
+
+        else:
+            print("O elemnto que inseriu não se encontra na lista")
+
+
+    if menu == 0:
+        print("Programa terminado")
