@@ -1,0 +1,118 @@
+cinema = [(70, [10, 11, 12, 13, 14, 36, 37, 38, 40, 41, 46, 47, 59, 60, 61], "Avatar"), (80, [15, 16, 17, 18, 22, 23, 24, 25, 29, 30, 37, 38, 45, 46, 47], "Creed III")]
+
+def listar(cinema):
+    print("Lista de salas:")
+    for i in cinema:
+        nlugares, vendidos, filme = i
+        print("Lugares: ", nlugares)
+        print("vendidos: ", vendidos)
+        print("Filme: ", filme)
+        print("---------------------")
+def disponivel(cinema,filme, lugar):
+    dispo = False
+    for i in cinema:
+        nlugares, vendidos, filmeesc = i
+        if filme == filmeesc and lugar <= nlugares:
+            if lugar not in vendidos:
+                dispo = True
+    return dispo
+
+
+def vendebilhete(cinema, filme, lugar):
+    if disponivel(cinema, filme, lugar) == True:
+        for i in cinema:
+            nlugares, vendidos, filmeesc = i
+            if filme == filmeesc:
+                vendidos.append(lugar)
+    return cinema
+
+def listardisponibilidades(cinema):
+    for i in cinema:
+        nlugares, vendidos, filme = i
+        lugaresdisp = nlugares - len(vendidos)
+        print(filme, lugaresdisp)
+
+def infosala(cinema, filme):
+    for i in cinema:
+        nlugares, vendidos, filmeesc = i
+        if filme == filmeesc:
+            print("filme: ", filmeesc)
+            print("Lugares: ", nlugares)
+            print("Ocupados: ", vendidos)
+            print("---------------------")
+
+def inserirsala(cinema, sala):
+            for sala in cinema:
+                (nlugares, vendidos, filme)= sala
+            vendidos = []
+            salanova = (nlugares, vendidos, filmeesc)
+            if salanova not in cinema:
+                Nvendidos = int(input("Quantos bilhetes estão vendidos até ao momento? "))
+                if Nvendidos > 0:
+                    while Nvendidos > 0:
+                        lugarvend = int(input("Seleciona um dos lugares vendidos que ainda não tenhas adicionado à lista "))
+                        vendidos.append(lugarvend)
+                        Nvendidos = Nvendidos-1
+                cinema.append(salanova)
+                print("Foi criada uma nova sala: ")
+                print("Filme: ", filmeesc)
+                print("Lugares: ", nlugares)
+                print("Vendidos: ", vendidos)
+                return(cinema)
+
+def removesala(cinema, filme):
+            for i in cinema:
+                (nlugares, vendidos, filmesala) = i
+                if filmesala == filme:
+                    cinema.remove(i)
+            return cinema
+
+menu = 20
+while menu != 0:
+    menu = int(input('''
+    MENU:
+    1) listar salas
+    2) disponibilidade de um lugar na sala
+    3) vender bilhete
+    4) ver número de lugares disponível em cada sala
+    5) informações acerca de uma sala
+    6) criar nova sala
+    7) remover uma sala
+    0) sair
+
+    '''))
+    if menu == 1:
+        listar(cinema)
+
+    if menu == 2:
+        filmeesc = input("Que filme queres ver? ")
+        lugaresc = int(input("Escolhe um lugar "))
+        print("O lugar ", lugaresc, "está disponível? ")
+        print(disponivel(cinema,filmeesc,lugaresc))
+
+    if menu == 3:
+        filmeesc = input("Escolhe o filme que queres ver ")
+        print("Quero ver o filme ", filmeesc)
+        lugaresc = int(input("escolhe um lugar da sala "))
+        print("Quero o lugar ", lugaresc)
+        print("Atualização na lista do cinema ", vendebilhete(cinema, filmeesc, lugaresc))
+
+    if menu == 4:
+        listardisponibilidades(cinema)
+
+    if menu == 5:
+        filmeesc = input("Escolhe a sala, com base no filme, da qual queres saber a informação ")
+        infosala(cinema,filmeesc)
+
+    if menu == 6:
+        nlugares = input("Quantos lugares tem a nova sala? ")
+        filmeesc = input("Que filme vai estar exposto na nova sala? ")
+        inserirsala(cinema, filmeesc)
+
+    if menu == 7:
+        filmesala = input("Escreve o nome do filme em exibição na sala que vai ser removida ")
+        print("A lista de salas foi atualizada: ")
+        print(removesala(cinema, filmesala))
+
+    if menu == 0:
+        print("Programa terminado ")
