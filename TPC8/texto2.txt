@@ -1,0 +1,6 @@
+Lista Frutas:
+melão
+melancia
+morango
+banana
+uvas

@@ -1,0 +1,6 @@
+Lista Legumes:
+batatas
+cenouras
+tomates
+pepinos
+alface
